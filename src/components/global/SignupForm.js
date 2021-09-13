@@ -14,7 +14,7 @@ const SignupForm = () => {
   });
   return (
     <div className="login-div">
-      <div className="login-container shadow">
+      <div className="signup-container shadow">
         <h1 className="login-heading">Create Your Account!</h1>
         {error && <Alert variant="danger">{error}</Alert>}
         <form

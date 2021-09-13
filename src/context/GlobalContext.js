@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import {
   getAuth,
@@ -22,51 +22,56 @@ const GlobalProvider = ({ children }) => {
 
   // login user function
   const handleLoginUser = (userData) => {
+    const auth = getAuth();
 
-    // referece of database
-    const dbRef = ref(getDatabase());
-    // generate key from the email and account type
-    const userId = handleGenerateUniqueKey(
-      userData.accountType,
-      userData.email
-    );
-    // search the key in the database
-    get(child(dbRef, `users/${userId}`))
-      .then((snapshot) => {
+    // check if the user is not admin
+      // referece of database
+      const dbRef = ref(getDatabase());
+      // generate key from the email and account type
+      const userId = handleGenerateUniqueKey(
+        userData.accountType,
+        userData.email
+      );
+      // search the key in the database
+      get(child(dbRef, `users/${userId}`))
+        .then((snapshot) => {
           // if the key is available in the database then login the user
-        if (snapshot.exists()) {
-          console.log(snapshot.val());
-          const auth = getAuth();
-          // login function
-          console.log("userData", userData);
-          signInWithEmailAndPassword(auth, userData.email, userData.password)
-            .then((userCredential) => {
-              // Signed in
-              const user = userCredential.user;
-              setUser(user);
-              Swal.fire({
-                icon: "success",
-                title: "Login Successful",
+          if (snapshot.exists()) {
+            console.log(snapshot.val());
+            // login function
+            console.log("userData", userData);
+            signInWithEmailAndPassword(auth, userData.email, userData.password)
+              .then((userCredential) => {
+                // Signed in
+                Swal.fire({
+                  icon: "success",
+                  title: "Login Successful",
+                }).then(error=>{
+                  setUser({
+                    ...userData
+                  })
+                  localStorage.setItem("user", JSON.stringify(userData));
+                  history.push("/student");
+                });
+                // ...
+              })
+              .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setError(errorMessage);
+                // ..
               });
-              // ...
-            })
-            .catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              setError(errorMessage);
-              // ..
-            });
-        } else {
+          } else {
             // if no key is available then show message
-          Swal.fire({
-            icon: "error",
-            title: "No data available",
-          });
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+            Swal.fire({
+              icon: "error",
+              title: "No data available",
+            });
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
   };
 
   // create a function to replace email's dot with dash
@@ -114,11 +119,27 @@ const GlobalProvider = ({ children }) => {
       });
   };
 
+  const handleLogout = ()=>{
+    const auth = getAuth();
+    auth.signOut().then(()=>{
+      setUser({});
+      history.push("/login");
+    })
+  }
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUser(user);
+    }
+  } , [])
+
   return (
     <GlobalContext.Provider
       value={{
         handleLoginUser: handleLoginUser,
         handleSignupUser: handleSignupUser,
+        handleLogout: handleLogout,
         error,
         user,
       }}

@@ -1,0 +1,17 @@
+.navbar{
+    background-color: #170055 !important;
+}
+.logout-btn{
+    background-color:#fff !important;
+    color:#170055 !important;
+    border-radius: 2px;
+    padding: 5px 25px !important;
+}
+
+.links{
+    color: #fff !important;
+}
+.link-item{
+    color:#fff;
+    text-decoration: none;
+}
