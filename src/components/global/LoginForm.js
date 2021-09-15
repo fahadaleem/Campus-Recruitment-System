@@ -28,7 +28,7 @@ const LoginForm = () => {
             <Form.Control
               type="email"
               placeholder="Enter email"
-              className="shadow-none"
+              className="shadow-none input-text-field"
               onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
           </Form.Group>
@@ -37,7 +37,7 @@ const LoginForm = () => {
             <Form.Control
               type="password"
               placeholder="Enter password"
-              className="shadow-none"
+              className="shadow-none input-text-field"
               onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </Form.Group>
@@ -45,7 +45,7 @@ const LoginForm = () => {
             <Form.Label>Account Type</Form.Label>
             <Form.Select
               aria-label="Default select example"
-              className="shadow-none"
+              className="shadow-none input-form-select"
               onChange={(e) =>
                 setUser({ ...user, accountType: e.target.value })
               }

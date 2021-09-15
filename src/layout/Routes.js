@@ -17,11 +17,11 @@ const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/admin" component={AdminView} />
-      <Route exact path="/company" component={CompanyView} />
-      <Route exact path="/student" component={StudentView} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/signup" component={Signup} />
+      <Route  path="/admin" component={AdminView} />
+      <Route  path="/company" component={CompanyView} />
+      <Route  path="/student" component={StudentView} />
+      <Route  path="/login" component={Login} />
+      <Route  path="/signup" component={Signup} />
     </Switch>
   );
 };

@@ -26,12 +26,12 @@
   color: #170055;
   margin: 20px 0;
 }
-.form-control,
-.form-select {
+.input-text-field,
+.input-form-select {
   border: 2px solid #fff !important;
 }
 .form-control:focus,
-.form-select:focus {
+.input-form-select:focus {
   box-sizing: none !important;
   border-color: #170055 !important;
 }

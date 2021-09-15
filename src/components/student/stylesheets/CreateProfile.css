@@ -1,0 +1,29 @@
+.top-heading{
+    padding:20px 15px;
+    text-transform: capitalize;
+    font-size:2.6rem;
+    text-align: center;
+}
+.skill-message{
+    color:gray;
+    font-size:0.7rem;
+}
+.skill-set{
+    display: flex;
+    justify-content: start;
+}
+.skill-item{
+    padding:5px 25px;
+    background-color: #170055;
+    border-radius: 20px;
+    color:#fff;
+    font-size:0.8rem;
+    margin-right: 10px;
+}
+.remove-skill-btn{
+    padding: 0 !important;
+    background-color: transparent !important;
+    border:none;
+    color:#fff;
+    margin-left: 15px;
+}

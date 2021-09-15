@@ -29,7 +29,7 @@ const SignupForm = () => {
             <Form.Control
               type="text"
               placeholder="Enter full name"
-              className="shadow-none"
+              className="shadow-none input-text-field"
               value={user.fullName}
               onChange={(e) => setUser({ ...user, fullName: e.target.value })}
             />
@@ -39,7 +39,7 @@ const SignupForm = () => {
             <Form.Control
               type="email"
               placeholder="Enter email"
-              className="shadow-none"
+              className="shadow-none input-text-field"
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
@@ -49,7 +49,7 @@ const SignupForm = () => {
             <Form.Control
               type="password"
               placeholder="Enter password"
-              className="shadow-none"
+              className="shadow-none input-text-field"
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
@@ -58,7 +58,7 @@ const SignupForm = () => {
             <Form.Label>Account Type</Form.Label>
             <Form.Select
               aria-label="Default select example"
-              className="shadow-none"
+              className="shadow-none input-form-select"
               value={user.accountType}
               onChange={(e) =>
                 setUser({ ...user, accountType: e.target.value })
