@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext, useEffect } from "react";
+import React, { useContext, useState, createContext } from "react";
 import Swal from "sweetalert2";
 import { getDatabase, ref, set, child, get } from "../firebase/firebaseConfig";
 import { GlobalContext } from "./GlobalContext";

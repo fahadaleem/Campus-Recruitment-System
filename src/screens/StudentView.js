@@ -5,8 +5,7 @@ import Login from "./Login";
 import { Switch, Route } from "react-router-dom";
 import Home from "../components/student/home/Home";
 import CreateProfile from "../components/student/createProfile/CreateProfile";
-import ProfileAlreadyExist from "../components/student/createProfile/ProfileAlreadyExist";
-import { StudentProvider} from "../context/StudentContext";
+import { StudentProvider } from "../context/StudentContext";
 const StudentView = () => {
   const { user } = useContext(GlobalContext);
   return (
@@ -16,7 +15,7 @@ const StudentView = () => {
           <StudentNavbar />
           <Switch>
             <Route exact path="/student/home" component={Home} />
-            <Route path="/student/create-profile" component={CreateProfile} />
+            <Route path="/student/profile" component={CreateProfile} />
           </Switch>
         </>
       ) : (

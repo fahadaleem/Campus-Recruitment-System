@@ -1,16 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import "../stylesheets/CreateProfile.css";
-import {
-  Form,
-  Button,
-  FormGroup,
-  FormControl,
-  FormLabel,
-  Container,
-  Badge,
-  Col,
-  Row,
-} from "react-bootstrap";
+import { Form, Button, Container, Col, Row } from "react-bootstrap";
 import { StudentContext } from "../../../context/StudentContext";
 
 const CreateProfile = () => {

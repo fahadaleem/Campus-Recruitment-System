@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import {
   getAuth,
@@ -58,7 +58,6 @@ const GlobalProvider = ({ children }) => {
               // ...
             })
             .catch((error) => {
-              const errorCode = error.code;
               const errorMessage = error.message;
               setError(errorMessage);
               // ..
@@ -104,7 +103,6 @@ const GlobalProvider = ({ children }) => {
           key: key,
         });
         // Signed in
-        const user = userCredential.user;
         Swal.fire({
           icon: "success",
           title: "Account Created",
@@ -114,7 +112,6 @@ const GlobalProvider = ({ children }) => {
       })
       // if there is an error show error message
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         setError(errorMessage);
         // ..
