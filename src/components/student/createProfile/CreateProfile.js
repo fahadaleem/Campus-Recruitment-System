@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../stylesheets/CreateProfile.css";
 import { Form, Button, Container, Col, Row } from "react-bootstrap";
 import { StudentContext } from "../../../context/StudentContext";
 
 const CreateProfile = () => {
   // const {} = useContext(StudentContext);
+  const [isAllFieldsFilled, setIsAllFieldsFilled] = useState(false);
   const {
     handleSaveStudentProfile,
     userProfile,
@@ -15,6 +16,33 @@ const CreateProfile = () => {
   useEffect(() => {
     handleGetUserProfile();
   }, []);
+
+  useEffect(() => {
+    if (
+      userProfile.name.length > 0 &&
+      userProfile.fatherName.length > 0 &&
+      userProfile.dob.length > 0 &&
+      userProfile.gender.length > 0 &&
+      userProfile.phone.length > 0 &&
+      userProfile.email.length > 0 &&
+      userProfile.address.length > 0 &&
+      userProfile.college.length > 0 &&
+      userProfile.enrollmentNo.length > 0 &&
+      userProfile.education.length > 0 &&
+      userProfile.degree.length > 0 &&
+      userProfile.currentYear.length > 0 &&
+      userProfile.cgpa.length > 0 &&
+      userProfile.skills.length > 0 &&
+      userProfile.linkedIn.length > 0 &&
+      userProfile.github.length > 0 &&
+      userProfile.portfolio.length > 0 &&
+      userProfile.about.length > 0
+    ) {
+      setIsAllFieldsFilled(true);
+    }
+
+    console.log(isAllFieldsFilled, "field");
+  }, [userProfile]);
 
   return (
     <>
@@ -277,7 +305,7 @@ const CreateProfile = () => {
                   type="text"
                   value={userProfile.linkedin || ""}
                   onChange={(e) =>
-                    setProfile({ ...userProfile, linkedin: e.target.value })
+                    setProfile({ ...userProfile, linkedIn: e.target.value })
                   }
                   placeholder="LinkedIn Profile"
                 />
@@ -322,12 +350,11 @@ const CreateProfile = () => {
               placeholder="Describe yourself"
             />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" disabled={!isAllFieldsFilled}>
             Submit
           </Button>
         </Form>
       </Container>
-      )
     </>
   );
 };

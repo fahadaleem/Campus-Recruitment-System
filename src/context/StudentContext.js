@@ -10,7 +10,27 @@ export const StudentProvider = (props) => {
   const { user } = useContext(GlobalContext);
   const dbRef = ref(getDatabase());
 
-  const [userProfile, setProfile] = useState({});
+  const [userProfile, setProfile] = useState({
+    about: "",
+    address: "",
+    cgpa: "",
+    college: "",
+    currentYear: "",
+    degree: "",
+    dob: "",
+    education: "",
+    email: "",
+    enrollmentNo: "",
+    fatherName: "",
+    gender: "",
+    github: "",
+    linkedIn: "",
+    name: "",
+    phone: "",
+    portfolio: "",
+    skillName: "",
+    skills: [],
+  });
   async function handleSaveStudentProfile(profile) {
     try {
       const db = getDatabase();
