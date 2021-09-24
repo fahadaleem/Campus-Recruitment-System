@@ -12,17 +12,18 @@ import Login from "../screens/Login";
 // import Signup component from screens folder
 import Signup from "../screens/Signup";
 
-
-
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route  path="/admin" component={AdminView} />
-      <Route  path="/company" component={CompanyView} />
-      <Route  path="/student" component={StudentView} />
-      <Route  path="/login" component={Login} />
-      <Route  path="/signup" component={Signup} />
+      <Route path="/admin" component={AdminView} />
+      <Route path="/company" component={CompanyView} />
+      <Route path="/student" component={StudentView} />
+      <Route path="/login" component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route>
+        <h1>Not Found</h1>
+      </Route>
     </Switch>
   );
 };

@@ -30,6 +30,7 @@ export const StudentProvider = (props) => {
     portfolio: "",
     skillName: "",
     skills: [],
+    isActivate: false,
   });
   async function handleSaveStudentProfile(profile) {
     try {

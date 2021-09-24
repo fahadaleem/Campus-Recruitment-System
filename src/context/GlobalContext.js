@@ -53,7 +53,7 @@ const GlobalProvider = ({ children }) => {
                 };
                 setUser(userObj);
                 localStorage.setItem("user", JSON.stringify(userObj));
-                history.push("/student");
+                history.push(`/${user.accountType}`);
               });
               // ...
             })
@@ -122,6 +122,7 @@ const GlobalProvider = ({ children }) => {
     const auth = getAuth();
     auth.signOut().then(() => {
       setUser({});
+      JSON.parse(localStorage.setItem("user", {}));
       history.push("/login");
     });
   };
